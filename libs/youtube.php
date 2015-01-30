@@ -1,5 +1,8 @@
 <?php
 function getYoutubeID($url) {
+    if (!$url) {
+        return false;
+    }
     $matches = array();
     if (!preg_match('/^(https?:\/\/)?(www\.youtube\.com\/watch\?v=|youtu.be\/)(?P<youtube_id>[0-9a-z]+)/i', $url, $matches)) {
         return false;
@@ -23,12 +26,9 @@ function getYoutubeEmbed($url, $options = array()) {
                           'width'    => 560,
                           'height'   => 315
                         );
-    if (count($options) > 0)
-    {
-        foreach ($def_options as $key=>$value)
-        {
-            if(isset($options[$key]))
-            {
+    if (count($options) > 0) {
+        foreach ($def_options as $key=>$value) {
+            if(isset($options[$key])) {
                 $def_options[$key] = $options[$key];
             }
         }
@@ -43,8 +43,7 @@ function getYoutubeEmbed($url, $options = array()) {
     unset($def_options['height']);
 
     $args = array();
-    foreach ($def_options as $key=>$value)
-    {
+    foreach ($def_options as $key=>$value) {
         $args[] = $key . '=' . $value;
     }
     $arg = implode('&amp;', $args);
