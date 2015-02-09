@@ -4,7 +4,7 @@ function getYoutubeID($url) {
         return false;
     }
     $matches = array();
-    if (!preg_match('/^(https?:\/\/)?(www\.youtube\.com\/watch\?v=|youtu.be\/)(?P<youtube_id>[0-9a-z]+)/i', $url, $matches)) {
+    if (!preg_match('/^(https?:\/\/)?(www\.youtube\.com\/watch\?v=|youtu.be\/)(?P<youtube_id>[0-9a-z-_]+)/i', $url, $matches)) {
         return false;
     }
     return $matches['youtube_id'];
