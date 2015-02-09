@@ -7,7 +7,7 @@ function getYoutubeID($url) {
     if (!preg_match('/^(https?:\/\/)?(www\.youtube\.com\/watch\?v=|youtu.be\/)(?P<id>[0-9a-z-_]+)(?P<list>[&?]list=[0-9a-z-_]*)*/i', $url, $matches)) {
         return false;
     }
-    if ($matches['list']){
+    if (isset($matches['list'])){
         $matches['list'] = substr($matches['list'], strpos($matches['list'], "=") + 1);        
     }
     return $matches;
@@ -15,7 +15,7 @@ function getYoutubeID($url) {
 
 function getYoutubeEmbed($url, $options = array()) {
     $youtube = getYoutubeID($url);
-    if(!$youtube['id']) {
+    if(!$youtube) {
         return false;
     }
 // rel:      影片播放結束後顯示其他推薦影片
