@@ -47,10 +47,6 @@ function getYoutubeEmbed($url, $options = array()) {
     $height = $def_options['height'];
     unset($def_options['height']);
 
-    // if ($youtube['list']) {
-    //     $def_options['list'] = $youtube['list'];
-    // }
-
     $args = array();
     foreach ($def_options as $key=>$value) {
         if ($value)
